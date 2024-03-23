@@ -1,34 +1,27 @@
 import { Card, CardContent } from "@/components/ui/card";
-import Error from "next/error";
 import Link from "next/link";
-import { Key } from "react";
 async function getusers() {
 	const users = await fetch("https://jsonplaceholder.typicode.com/users");
 	if (users) {
 		return users.json();
 	}
-	// else {
-	//   throw new Error("Failed to fetch");
-	// }
 }
 export default async function Home() {
 	const data = await getusers();
 	return (
 		<div className="container">
-			<p>List of Users available</p>
-			<div className="grid grid-cols-3 gap-4 mt-5 p-4">
-				{data.map((users: any) => (
-					<Card key={users.id} className="p-4">
-            <CardContent>
-							<p>
-								Name: <Link href={`/${users.id}`}>{users.name}</Link>
+			<p className="text-2xl font-bold mb-4 text-center">List of Users Available</p>
+			<div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-4 mt-5">
+				{data.map((user: any) => (
+					<Card key={user.id} className="p-4 shadow-md hover:shadow-lg rounded-lg">
+						<CardContent>
+							<p className="text-lg font-semibold mb-2">
+								<Link href={`/${user.id}`} className="text-blue-400 hover:underline">
+									{user.name}
+								</Link>
 							</p>
-							<p>
-								Email: <span>{users.email}</span>
-							</p>
-							<p>
-								Website: <span>{users.website}</span>
-							</p>
+							<p className="text-sm text-gray-600 mb-2">Email: {user.email}</p>
+							<p className="text-sm text-gray-600">Website: {user.website}</p>
 						</CardContent>
 					</Card>
 				))}

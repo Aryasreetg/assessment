@@ -20,11 +20,11 @@ const Page = ({ params }: { params: { id: number } }) => {
 		fetchUser();
 	}, [params?.id]);
 	return (
-		<div className="container  flex items-center justify-center">
-			<Card className=" p-2 w-1/3">
+		<div className="container flex items-center justify-center">
+			<Card className="p-4 md:p-6 w-full md:w-1/2 lg:w-2/3">
 				<CardHeader>
 					<CardTitle>
-						<div className="flex gap-2 items-center">
+						<div className="flex items-center gap-2">
 							<Avatar>
 								<AvatarImage src="https://github.com/shadcn.png" />
 								<AvatarFallback>CN</AvatarFallback>
@@ -32,20 +32,39 @@ const Page = ({ params }: { params: { id: number } }) => {
 							Profile
 						</div>
 					</CardTitle>
-					<CardDescription>find the details of user below</CardDescription>
+					<CardDescription>Find the details of the user below:</CardDescription>
 				</CardHeader>
 				<CardContent>
 					{user && (
 						<>
-							<p>
-								Name: <span>{user.name}</span>
-							</p>
-							<p>
-								Email: <span>{user.email}</span>
-							</p>
-							<p>
-								Website: <span>{user.website}</span>
-							</p>
+							<div className="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-4">
+								<div className="mb-4">
+									<p className="font-semibold">Name:</p>
+									<p>{user.name}</p>
+								</div>
+								<div className="mb-4">
+									<p className="font-semibold">Username:</p>
+									<p>{user.username}</p>
+								</div>
+								<div className="mb-4">
+									<p className="font-semibold">Email:</p>
+									<p>{user.email}</p>
+								</div>
+								<div className="mb-4">
+									<p className="font-semibold">Address:</p>
+									<p>
+										{user.address.street}, {user.address.suite}, {user.address.city}, {user.address.zipcode}
+									</p>
+								</div>
+								<div className="mb-4">
+									<p className="font-semibold">Phone:</p>
+									<p>{user.phone}</p>
+								</div>
+								<div className="mb-4">
+									<p className="font-semibold">Website:</p>
+									<p>{user.website}</p>
+								</div>
+							</div>
 						</>
 					)}
 				</CardContent>

@@ -34,64 +34,66 @@ const Page = () => {
 	function onSubmit(values: z.infer<typeof formSchema>) {
 		console.log(values);
 		form.reset();
-    toast({
+		toast({
 			title: "Successfully submitted",
 			description: `${values?.name}-${values?.email}-${values?.message}`,
 		});
 	}
 	return (
 		<>
-			<Card className="m-4 p-6">
-				<CardHeader>
-					<CardTitle className="text-blue-400">Contact Form</CardTitle>
-				</CardHeader>
-				<CardContent>
-					<Form {...form}>
-						<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-							<FormField
-								control={form.control}
-								name="name"
-								render={({ field }) => (
-									<FormItem>
-										<FormLabel>Name</FormLabel>
-										<FormControl>
-											<Input placeholder="Enter you name" {...field} />
-										</FormControl>
-										<FormMessage />
-									</FormItem>
-								)}
-							/>
-							<FormField
-								control={form.control}
-								name="email"
-								render={({ field }) => (
-									<FormItem>
-										<FormLabel>Email</FormLabel>
-										<FormControl>
-											<Input placeholder="Enter you Email" {...field} />
-										</FormControl>
-										<FormMessage />
-									</FormItem>
-								)}
-							/>
-							<FormField
-								control={form.control}
-								name="message"
-								render={({ field }) => (
-									<FormItem>
-										<FormLabel>Message</FormLabel>
-										<FormControl>
-											<Textarea placeholder="Enter you message" {...field} />
-										</FormControl>
-										<FormMessage />
-									</FormItem>
-								)}
-							/>
-							<Button type="submit">Submit</Button>
-						</form>
-					</Form>
-				</CardContent>
-			</Card>
+			<div className="flex justify-center items-center">
+				<Card className="p-6 w-full md:w-3/5 shadow-md">
+					<CardHeader>
+						<CardTitle >Contact Form</CardTitle>
+					</CardHeader>
+					<CardContent>
+						<Form {...form}>
+							<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+								<FormField
+									control={form.control}
+									name="name"
+									render={({ field }) => (
+										<FormItem>
+											<FormLabel>Name</FormLabel>
+											<FormControl>
+												<Input placeholder="Enter your name" {...field} />
+											</FormControl>
+											<FormMessage />
+										</FormItem>
+									)}
+								/>
+								<FormField
+									control={form.control}
+									name="email"
+									render={({ field }) => (
+										<FormItem>
+											<FormLabel>Email</FormLabel>
+											<FormControl>
+												<Input placeholder="Enter your Email" {...field} />
+											</FormControl>
+											<FormMessage />
+										</FormItem>
+									)}
+								/>
+								<FormField
+									control={form.control}
+									name="message"
+									render={({ field }) => (
+										<FormItem>
+											<FormLabel>Message</FormLabel>
+											<FormControl>
+												<Textarea placeholder="Enter your message" {...field} />
+											</FormControl>
+											<FormMessage />
+										</FormItem>
+									)}
+								/>
+								<Button type="submit">Submit</Button>
+							</form>
+						</Form>
+					</CardContent>
+				</Card>
+			</div>
 		</>
 	);
 };
