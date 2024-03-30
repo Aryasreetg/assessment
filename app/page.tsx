@@ -8,6 +8,16 @@ async function getusers() {
 }
 export default async function Home() {
 	const data = await getusers();
+	// Function for ascending order
+	function ascendingNames(a: any, b: any) {
+		return b.name.localeCompare(a.name);
+	}
+	// Function descending order
+	function descendingNames(a: any, b: any) {
+		return b.name.localeCompare(a.name);
+	}
+	const sortedUsers = data.sort(descendingNames);
+	console.log(sortedUsers);
 	return (
 		<div className="container">
 			<p className="text-2xl font-bold mb-4 text-center">List of Users Available</p>

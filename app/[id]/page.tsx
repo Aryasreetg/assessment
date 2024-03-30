@@ -64,6 +64,10 @@ const Page = ({ params }: { params: { id: number } }) => {
 									<p className="font-semibold">Website:</p>
 									<p>{user.website}</p>
 								</div>
+								<div>
+									<p className="font-sembold">Company:</p>
+									<p>{user.company.name}</p>
+								</div>
 							</div>
 						</>
 					)}

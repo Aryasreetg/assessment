@@ -11,7 +11,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
 const formSchema = z.object({
 	name: z
-		.string()
+		.number()
 		.min(3, {
 			message: "Name must be at least 3 characters.",
 		})
@@ -26,7 +26,7 @@ const Page = () => {
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
-			name: "",
+			name: 0,
 			email: "",
 			message: "",
 		},
